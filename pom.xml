@@ -12,4 +12,36 @@
 	  <module>b</module>
 	  <module>c</module>
   </modules>
+  
+  <build>
+  <plugins>
+  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.0.1</version>
+        <configuration>
+          <printFailingErrors>true</printFailingErrors>
+        </configuration>
+        <executions>
+          <execution>
+          <phase>validate</phase>
+            <goals>
+              <goal>pmd</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+  </plugins>
+  </build>
+  
+  <reporting>
+	    <plugins>
+	          <plugin>
+	                  <groupId>org.apache.maven.plugins</groupId>
+	                  <artifactId>maven-pmd-plugin</artifactId>
+	                  <version>3.11.0</version>	                 
+	          </plugin>
+	    </plugins>
+	</reporting>
+  
 </project>
