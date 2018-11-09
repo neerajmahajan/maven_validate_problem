@@ -18,7 +18,7 @@
   <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.0.1</version>
+        <version>3.11.0</version>
         <configuration>
           <printFailingErrors>true</printFailingErrors>
         </configuration>
@@ -30,6 +30,31 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+	  <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>xml-maven-plugin</artifactId>
+        <version>1.0</version>
+		<inherited>false</inherited>
+        <executions>
+          <execution>
+			<phase>validate</phase>
+            <goals>
+              <goal>transform</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <transformationSets>
+            <transformationSet>
+              <dir>target</dir>
+              <includes>
+				<include>pmd.xml</include>
+			  </includes>
+              <stylesheet>src/main/resources/transform.xsl</stylesheet>
+            </transformationSet>
+          </transformationSets>
+        </configuration>
       </plugin>
   </plugins>
   </build>
